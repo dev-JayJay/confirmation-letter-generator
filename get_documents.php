@@ -8,13 +8,17 @@ try {
     $studentId = (int)($_GET['id'] ?? 0);
     if (!$studentId) throw new Exception("Missing student ID");
 
-    $stmt = $pdo->prepare("SELECT birth_cert, primary_cert, olevel_original, jamb_letter, jamb_result, indigene_cert 
-                           FROM students_education 
-                           WHERE student_id = :id");
+    $stmt = $pdo->prepare("SELECT doc_type, file_path FROM student_documents WHERE student_id = :id");
     $stmt->execute([':id' => $studentId]);
-    $docs = $stmt->fetch(PDO::FETCH_ASSOC);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if (!$docs) throw new Exception("No documents found for this student");
+    if (!$rows) throw new Exception("No documents found for this student");
+
+    // Convert rows into key => path
+    $docs = [];
+    foreach ($rows as $row) {
+        $docs[$row['doc_type']] = $row['file_path'];
+    }
 
     echo json_encode(['status' => 'success', 'documents' => $docs]);
 } catch (Exception $e) {

@@ -21,6 +21,28 @@
       </table>
     </section>
   </div>
+<div id="docModal" style="
+  display:none;
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.8); color:white; overflow:auto; padding:20px; z-index:9999;
+">
+  <div style="
+    background:#222; 
+    padding:20px; 
+    border-radius:8px; 
+    max-width:90%; 
+    margin:40px auto; 
+    color:white;
+  ">
+    <button onclick="closeModal()" 
+            style="float:right; background:red; color:white; padding:5px 10px; border:none; cursor:pointer;">
+      Close
+    </button>
+    <h2>Student Documents</h2>
+    <div id="docContent" style="display:flex; flex-wrap:wrap;"></div>
+  </div>
+</div>
 
 <script>
 async function loadStudents(){
@@ -63,35 +85,67 @@ function openUpdate(id){
   }).then(()=>loadStudents());
 }
 
-function viewDocs(id) {
-    fetch(`get_documents.php?id=${id}`)
-        .then(res => res.json())
-        .then(data => {
-            if(data.status === 'success') {
-                const docs = data.documents;
-                let html = '<h3>Student Documents</h3><ul>';
-                for(const [key, path] of Object.entries(docs)){
-                    if(path){
-                        html += `<li>${key}: <a href="${path}" target="_blank">View</a></li>`;
-                    }
-                }
-                html += '</ul>';
-
-                
-                const modal = document.getElementById('docModal');
-                if(modal){
-                    modal.innerHTML = html;
-                    modal.style.display = 'block';
-                } else {
-                    alert('Documents:\n' + Object.entries(docs).map(d => d[0] + ': ' + d[1]).join('\n'));
-                }
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(err => alert('Fetch error: ' + err));
+function closeModal() {
+    const modal = document.getElementById('docModal');
+    modal.style.display = 'none';
+    document.getElementById('docContent').innerHTML = '';
 }
 
+function viewDocs(studentId) {
+    fetch(`get_documents.php?id=${studentId}`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.status !== 'success') {
+                alert('Error: ' + data.message);
+                return;
+            }
+
+            const docs = data.documents;
+            const docContent = document.getElementById('docContent');
+            docContent.innerHTML = ''; // clear previous
+
+            for(const [docType, path] of Object.entries(docs)) {
+                if(!path) continue;
+
+                const ext = path.split('.').pop().toLowerCase();
+                const container = document.createElement('div');
+                container.style.margin = '10px';
+                container.style.textAlign = 'center';
+                container.style.flex = '0 0 200px';
+
+                const title = document.createElement('strong');
+                title.textContent = docType.replace(/_/g, ' ');
+                container.appendChild(title);
+
+                container.appendChild(document.createElement('br'));
+
+                if(['jpg','jpeg','png','gif'].includes(ext)) {
+                    const img = document.createElement('img');
+                    img.src = path;
+                    img.style.maxWidth = '180px';
+                    img.style.maxHeight = '180px';
+                    img.style.border = '1px solid #555';
+                    img.style.borderRadius = '4px';
+                    img.style.marginTop = '5px';
+                    container.appendChild(img);
+                } else {
+                    const link = document.createElement('a');
+                    link.href = path;
+                    link.target = '_blank';
+                    link.style.color = '#0af';
+                    link.textContent = 'View Document';
+                    container.appendChild(link);
+                }
+
+                docContent.appendChild(container);
+            }
+
+            document.getElementById('docModal').style.display = 'block';
+        })
+        .catch(err => {
+            alert('Fetch error: ' + err);
+        });
+}
 
 document.addEventListener('DOMContentLoaded', loadStudents);
 </script>
