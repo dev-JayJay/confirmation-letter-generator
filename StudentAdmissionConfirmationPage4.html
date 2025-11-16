@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Passport and Signature</title>
+  <link rel="stylesheet" href="StudentAdmissionConfirmationPage4.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Upload Passport & Signature</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+
+      <div class="upload-section">
+        <label for="passport">Upload Passport Photograph:</label>
+        <input type="file" id="passport" name="passport" accept="image/*" required>
+        <div class="preview">
+          <img id="passportPreview" src="" alt="Passport Preview">
+        </div>
+      </div>
+
+      <div class="upload-section">
+        <label for="signature">Upload Signature:</label>
+        <input type="file" id="signature" name="signature" accept="image/*" required>
+        <div class="preview">
+          <img id="signaturePreview" src="" alt="Signature Preview">
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <button id="backBtn">⬅ Back</button>
+        <button id="saveContinueBtn">Save & Continue</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="StudentAdmissionConfirmationPage4.js"></script>
+</body>
+</html>

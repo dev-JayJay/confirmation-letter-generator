@@ -1,0 +1,111 @@
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background-color: #f3f6fa;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  width: 95%;
+  margin: 20px auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004d2b;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+}
+
+header button {
+  background: #d9534f;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background: #c9302c;
+}
+
+.student-section h2 {
+  text-align: center;
+  color: #003b2f;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+thead {
+  background-color: #004d2b;
+  color: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.approved {
+  color: green;
+}
+
+.status.rejected {
+  color: red;
+}
+
+button.action {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.approve {
+  background-color: #28a745;
+  color: white;
+}
+
+button.reject {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.approve:hover {
+  background-color: #218838;
+}
+
+button.reject:hover {
+  background-color: #c82333;
+}

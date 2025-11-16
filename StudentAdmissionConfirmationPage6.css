@@ -1,0 +1,81 @@
+body {
+  font-family: "Times New Roman", serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.letter-container {
+  background: white;
+  padding: 40px 50px;
+  border: 1px solid #ccc;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 8px;
+  color: #222;
+  line-height: 1.6;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #002147;
+}
+
+.header h4 {
+  margin: 5px 0;
+  font-weight: normal;
+}
+
+.passport {
+  position: absolute;
+  right: 100px;
+  top: 130px;
+}
+
+.passport img {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #555;
+  object-fit: cover;
+}
+
+.letter-body h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.signatures img {
+  width: 100px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.print-btn {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.print-btn button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.print-btn button:hover {
+  background-color: #002147;
+}

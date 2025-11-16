@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - UDUS</title>
+  <link rel="stylesheet" href="AdminDashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>UDUS Admission Admin Dashboard</h1>
+      <button id="logoutBtn">Logout</button>
+    </header>
+
+    <section class="student-section">
+      <h2>All Submitted Student Admissions</h2>
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Personal Info</th>
+            <th>Education & O’Level</th>
+            <th>Documents Uploaded</th>
+            <th>Passport</th>
+            <th>Signature</th>
+            <th>Course</th>
+            <th>Admission No.</th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody">
+          <!-- Filled by JavaScript -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="AdminDashboard.js"></script>
+</body>
+</html>
