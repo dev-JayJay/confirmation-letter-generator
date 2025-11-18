@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("adminLoggedIn", "true");
 
       setTimeout(() => {
-        window.location.href = "AdminDashboard.html";
+        window.location.href = "AdminDashboard.php";
       }, 1500);
     } else {
       adminMessage.textContent = "❌ Invalid username or password.";

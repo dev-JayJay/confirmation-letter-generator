@@ -42,19 +42,24 @@ $jamb = $_GET['jamb'] ?? '';
 
       <p>
         The candidate has been admitted to read <strong id="courseName"><?= $student ? htmlspecialchars($student['course'] ?? '') : '' ?></strong> 100 level in the Faculty/College/School of Science.
+        Relevant Faculties and Departments are requested to
+        note and register the candidate accordingly, subject to the presentation of the required
+        credentials.
       </p>
 
       <h4>UNDERTAKING</h4>
       <p>
-        I, <span id="studentFullName"><?= $student ? htmlspecialchars($student['surname'].' '.$student['firstname'].' '.$student['othername']) : '' ?></span>, the undersigned, hereby accept the provisional admission offered to me...
-      </p>
-
+        I, <span id="studentFullName"><?= $student ? htmlspecialchars($student['surname'].' '.$student['firstname'].' '.$student['othername']) : '' ?></span>, the undersigned, hereby accept the provisional
+        admission offered to me. I further accept that this offer may be withdrawn by the
+        University within the duration of my study if it is discovered that I have not satisfied the
+        entry requirements or that my qualification was otherwise misrepresented at the time of
+        registration
       <p><strong>Dated:</strong> <span id="undertakeDate"><?= date('F j, Y') ?></span></p>
 
       <div class="signatures">
         <div>
            <!-- registrar signature placeholder -->
-          <img id="registrarSignature" alt="Registrar Signature">
+          <img src="regissign.png" id="registrarSignature" alt="Registrar Signature">
           <p>Registrar</p>
         </div>
         <div>
